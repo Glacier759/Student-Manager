@@ -1,0 +1,41 @@
+1. 登陆模块
+	1) 首先查找已有的学生名单（涉及表"学生", "班级", "专业"， 记录了学生的个人信息） - 已登陆过该系统
+		登陆时需要进行学号密码匹配，需要有新的表来对该数据进行存储
+		判断用户是否存在：SELECT * FROM 登录表 WHERE username = #{username};
+		核对账号密码：SELECT * FROM 登陆表 WHERE username = #{username} AND password = #{password};
+		//如果账户核对失败则使用教务管理系统接口进行登陆
+	2) 调用教务管理系统进行用户判断
+		增加新的用户：INSERT INTO 登录表(username, password) VALUES(#{username}, #{password});
+		//目前没有考虑用户基本信息的获取
+	
+
+1.实验安排查看
+	1）查看当前登录用户的实验安排(依据学生的id进行查看)
+		SELECT 实验安排.* FROM 选课学生,实验安排 
+							WHERE 选课学生.学生ID={#username} 
+								AND 选课学生.课程班编号 = 实验安排.课程班编号;
+
+	2）查看所有实验安排信息
+		SELECT * FROM 实验安排 WHERE 实验ID = #{id};
+		SELECT * FROM 实验安排 WHERE 课程班编号 = #{number};
+		SELECT * FROM 实验安排 WHERE 创建时间 = #{date};
+		SELECT * FROM 实验安排 WHERE 创建时间 BETWEEN #{date1} AND #{date2};
+		附：提供前端搜索框进行关键字筛选
+	3）查看具体实验任务
+		SELECT * FROM 实验任务 WHERE 实验ID = #{实验ID}; //上一步获取实验安排信息时已经拿到实验ID
+	4）查看实验题目
+		SELECT * FROM 实验题目 WHERE 任务ID = #{任务ID}; //上一步获取实验任务时已经拿到任务ID
+
+2. 实验小组注册
+	就是在"实验小组"表中增加一条记录
+		a. 首先创建一个实验小组
+			INSERT INTO 实验小组(实验ID,小组名称,项目名称,项目描述,附件,状态) VALUES(#{实验ID},#{小组名称}..);
+		b. 需要知道上一条INSERT语句执行后创建的实验小组的小组ID
+		c. 加入实验小组成员首先要确定成员是否存在
+			调用登录模块的方法进行判断
+		d. 将成员加入该实验小组
+			INSERT INTO 实验小组成员(成员ID,小组ID,学生ID,)...
+
+3. 实验作业提交
+	a. 
+
