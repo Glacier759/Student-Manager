@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.entity.ExpTaskBean">
+    <resultMap id="ExpTaskBean" type="ExpTaskBean">
+        <result column="TaskID" property="taskID" />
+        <result column="ExpID" property="expID" />
+        <result column="TaskIndex" property="taskIndex" />
+        <result column="TaskName" property="taskName" />
+        <result column="Description" property="description" />
+        <result column="AttachFile" property="attachFile" />
+        <result column="StartTime" property="startTime" />
+        <result column="EndTime" property="endTime" />
+    </resultMap>
+
+    <select id="getExpTaskByID" parameterType="Integer" resultMap="ExpTaskBean">
+        SELECT * FROM ExpTask WHERE TaskID = #{taskID};
+    </select>
+    
+    <select id="getExpTaskByExpID" parameterType="Integer" resultMap="ExpTaskBean">
+        SELECT * FROM ExpTask WHERE ExpID = #{expID};
+    </select>
+    
+    <select id="getExpTaskByTaskIndex" parameterType="Integer" resultMap="ExpTaskBean">
+        SELECT * FROM ExpTask WHERE TaskIndex = #{taskIndex};
+    </select>
+
+    <select id="getExpTaskByStartTime" parameterType="String" resultMap="ExpTaskBean">
+        SELECT * FROM ExpTask WHERE unix_timestamp(StartTime) = unix_timestamp(#{startTime});
+    </select>
+
+    <select id="getExpTaskByEndTime" parameterType="String" resultMap="ExpTaskBean">
+        SELECT * FROM ExpTask WHERE unix_timestamp(EndTime) = unix_timestamp(#{endTime});
+    </select>
+
+</mapper>

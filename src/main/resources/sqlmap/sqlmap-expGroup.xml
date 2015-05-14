@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.entity.ExpGroupBean">
+    <resultMap id="ExpGroupBean" type="ExpGroupBean">
+        <result column="GroupID" property="groupID" />
+        <result column="ExpID" property="expID" />
+        <result column="GroupName" property="groupName" />
+        <result column="PrjName" property="prjName" />
+        <result column="PrjDescription" property="prjDescription" />
+        <result column="AttachFile" property="attachFile" />
+        <result column="Status" property="status" />
+    </resultMap>
+
+    <select id="getExpGroupByID" parameterType="Integer" resultMap="ExpGroupBean">
+        SELECT * FROM ExpGroup WHERE GroupID = #{groupID};
+    </select>
+
+    <select id="getExpGroupByExpID" parameterType="Integer" resultMap="ExpGroupBean">
+        SELECT * FROM ExpGroup WHERE ExpID = #{expID};
+    </select>
+
+</mapper>
