@@ -62,4 +62,15 @@ public class ExpGroupDAO {
         return null;
     }
 
+    public static void insertExpGroup(ExpGroupBean expGroupBean) {
+        try {
+            mapper.insertExpGroup(expGroupBean);
+            session.commit();
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+    }
+
 }

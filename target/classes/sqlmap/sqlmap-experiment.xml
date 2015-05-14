@@ -30,9 +30,5 @@
     <select id="getExperimentBeforeTime" parameterType="String" resultMap="ExperimentBean">
         SELECT * FROM Experiment WHERE unix_timestamp(CreateTime) > unix_timestamp(#{beforeTime});
     </select>
-
-    <select id="getAllExperiment" resultMap="ExperimentBean">
-        SELECT * FROM Experiment;
-    </select>
     
 </mapper>

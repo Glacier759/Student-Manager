@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.entity.TaskResultBean">
+    <resultMap id="TaskResultBean" type="TaskResultBean">
+        <result column="ResultID" property="resultID" />
+        <result column="TaskID" property="taskID" />
+        <result column="SubmitterID" property="submitterID" />
+        <result column="SubmitTime" property="submitTime" />
+        <result column="Review" property="review" />
+        <result column="ReivewStatus" property="reviewStatus" />
+        <result column="Score" property="score" />
+    </resultMap>
+
+    <select id="getTaskResultByID" parameterType="Integer" resultMap="TaskResultBean">
+        SELECT * FROM TaskResult WHERE ResultID = #{resultID};
+    </select>
+
+    <select id="getTaskResultByTaskID" parameterType="Integer" resultMap="TaskResultBean">
+        SELECT * FROM TaskResult WHERE TaskID = #{taskID};
+    </select>
+
+    <select id="getTaskResultBySubmitterID" parameterType="Integer" resultMap="TaskResultBean">
+        SELECT * FROM TaskResult WHERE SubmitterID = #{submitterID};
+    </select>
+
+</mapper>

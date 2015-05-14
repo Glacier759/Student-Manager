@@ -20,9 +20,4 @@
         SELECT * FROM ExpGroup WHERE ExpID = #{expID};
     </select>
 
-    <insert id="insertExpGroup" parameterType="ExpGroupBean">
-        INSERT INTO ExpGroup(GroupID,ExpID,GroupName,PrjName,PrjDescription,AttachFile,Status)
-                  VALUES(#{groupID},#{expID},#{groupName},#{prjName},#{prjDescription},#{attachFile},#{status});
-    </insert>
-
 </mapper>

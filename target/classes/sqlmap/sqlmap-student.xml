@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.entity.StudentBean">
+    <resultMap id="StudentBean" type="StudentBean">
+        <result column="StuID" property="stuID" />
+        <result column="ClassID" property="classID" />
+        <result column="StuSN" property="stuSN" />
+        <result column="StuIndex" property="stuIndex" />
+        <result column="EnrolDate" property="enrolDate" />
+        <result column="Name" property="name" />
+        <result column="Sex" property="sex" />
+        <result column="TelNum" property="telNum" />
+        <result column="EMail" property="email" />
+        <result column="FamilyContact" property="familyContact" />
+        <result column="FamilyTel" property="familyTel" />
+        <result column="FamilyAddr" property="familyAddr" />
+        <result column="Status" property="status" />
+    </resultMap>
+
+    <select id="getStudentByID" parameterType="Integer" resultMap="StudentBean">
+        SELECT * FROM STUDENT WHERE StuID = #{stuID};
+    </select>
+
+    <select id="getStudentByClassID" parameterType="Integer" resultMap="StudentBean">
+        SELECT * FROM STUDENT WHERE ClassID = #{classID};
+    </select>
+
+    <select id="getStudentByStuSN" parameterType="String" resultMap="StudentBean">
+        SELECT * FROM STUDENT WHERE StuSN = #{stuSN};
+    </select>
+
+    <select id="getStudentByIndex" parameterType="Integer" resultMap="StuedntBean">
+        SELECT * FROM STUDENT WHERE StuIndex = #{stuIndex};
+    </select>
+
+    <select id="getStudentByName" parameterType="String" resultMap="StudentBean">
+        SELECT * FROM STUDENT WHERE Name = #{name};
+    </select>
+
+</mapper>

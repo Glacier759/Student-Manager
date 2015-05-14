@@ -20,11 +20,11 @@ public class ExperimentBean {
      * @param expID 实验ID
      * @param courClassID 课程班编号
      * @param dictID 数据字典ID
-     * @param creatTime 创建时间
+     * @param createTime 创建时间
      * @param expPlan 实验时间安排
      * @param groupTag 分组项目标识
      * */
-    public ExperimentBean(int expID, int courClassID, int dictID, Date creatTime, String expPlan, int groupTag) {
+    public ExperimentBean(int expID, int courClassID, int dictID, Date createTime, String expPlan, int groupTag) {
         this.expID = expID;
         this.courClassID = courClassID;
         this.dictID = dictID;

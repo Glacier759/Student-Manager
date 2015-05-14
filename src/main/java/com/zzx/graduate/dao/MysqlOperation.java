@@ -19,6 +19,8 @@ public interface MysqlOperation {
 
     public List<ExperimentBean> getExperimentBeforeTime(String beforeTime);
 
+    public List<ExperimentBean> getAllExperiment();
+
     public ExpTaskBean getExpTaskByID(Integer taskID);
 
     public List<ExpTaskBean> getExpTaskByExpID(Integer expID);
@@ -32,6 +34,8 @@ public interface MysqlOperation {
     public ExpGroupBean getExpGroupByID(Integer groupID);
 
     public List<ExpGroupBean> getExpGroupByExpID(Integer expID);
+
+    public void insertExpGroup(ExpGroupBean expGroupBean);
 
     public ExpGroupMemBean getExpGroupMemByID(Integer groupMemID);
 

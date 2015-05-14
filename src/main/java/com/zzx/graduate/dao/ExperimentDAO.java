@@ -101,4 +101,17 @@ public class ExperimentDAO {
         return null;
     }
 
+    public static List<ExperimentBean> getAllExperiment() {
+        try {
+            List<ExperimentBean> beans = mapper.getAllExperiment();
+            session.commit();
+            return beans;
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+        return null;
+    }
+
 }
