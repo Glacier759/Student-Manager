@@ -1,5 +1,6 @@
 package com.zzx.graduate.service;
 
+import com.zzx.graduate.entity.StudentInfo;
 import com.zzx.graduate.util.HttpUtil;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
@@ -25,8 +26,10 @@ public class LoginByZFsoft {
         this.password = password;
     }
 
-    public boolean login() {
+    public StudentInfo login() {
+        StudentInfo student = new StudentInfo();
         try {
+            student.setLogin(false);
             HttpUtil httpUtil = new HttpUtil();
             Document document = httpUtil.getMethod("http://222.24.19.201/default_ysdx.aspx");
             //筛选需要的部分
@@ -47,17 +50,29 @@ public class LoginByZFsoft {
             document = httpUtil.getMethod("http://222.24.19.201/xs_main.aspx?xh=" + username);
             for ( Element ele : document.select("ul[class=sub]").select("a[href]") ) {
                 if ( ele.text().equals("个人信息") ) {
-                    httpUtil.getMethod(ele.attr("abs:href"));
-                    return true;
+                    document = httpUtil.getMethod(ele.attr("abs:href"));
+
+                    student.setStuNumber(document.getElementById("xh").text());
+                    student.setStuName(document.getElementById("xm").text());
+                    student.setStuSex(document.getElementById("lbl_xb").text());
+                    student.setStuBirthday(document.getElementById("lbl_csrq").text());
+                    student.setStuNation(document.getElementById("lbl_mz").text());
+                    student.setStuIDCard(document.getElementById("lbl_sfzh").text());
+                    student.setStuDepartment(document.getElementById("lbl_xy").text());
+                    student.setStuMajor(document.getElementById("lbl_zymc").text());
+                    student.setStuClass(document.getElementById("lbl_xzb").text());
+                    student.setLogin(true);
+
+                    return student;
                 }
             }
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
             logger.error(baos.toString());
-            return false;
+            return student;
         }
-        return false;
+        return student;
     }
 
 }

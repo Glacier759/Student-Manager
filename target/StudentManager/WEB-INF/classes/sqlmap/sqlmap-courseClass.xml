@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.entity.CourseClassBean">
+    <resultMap id="CourseClassBean" type="CourseClassBean">
+        <result column="CourClassID" property="courClassID" />
+        <result column="CourID" property="courID" />
+        <result column="dictID" property="dictID" />
+        <result column="TeachID" property="teachID" />
+        <result column="Semester" property="semester" />
+        <result column="Status" property="status" />
+    </resultMap>
+
+    <select id="getCourseClassByID" parameterType="Integer" resultMap="CourseClassBean">
+        SELECT * FROM CourseClass WHERE CourClassID = #{courClassID};
+    </select>
+
+    <select id="getCourseClassByCourID" parameterType="Integer" resultMap="CourseClassBean">
+        SELECT * FROM CourseClass WHERE CourID = #{courID};
+    </select>
+
+    <select id="getCourseClassByDictID" parameterType="Integer" resultMap="CourseClassBean">
+        SELECT * FROM CourseClass WHERE dictID = #{dictID};
+    </select>
+
+    <select id="getCourseClassByTeachID" parameterType="Integer" resultMap="CourseClassBean">
+        SELECT * FROM CourseClass WHERE TeachID = #{teachID};
+    </select>
+
+</mapper>

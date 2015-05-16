@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.entity.CourStudentBean">
+    <resultMap id="CourStudentBean" type="CourStudentBean">
+        <result column="selCourID" property="selCourID" />
+        <result column="StuID" property="stuID" />
+        <result column="CourClassID" property="courClassID" />
+        <result column="UsualScore" property="usualScore" />
+        <result column="ExpScore" property="ExpScore" />
+        <result column="InterimScore" property="interimScore" />
+        <result column="PaperScore" property="paperScore" />
+        <result column="FinalScore" property="finalScore" />
+        <result column="Comment" property="comment" />
+    </resultMap>
+
+    <select id="getCourStudentByID" parameterType="Integer" resultMap="CourStudentBean">
+        SELECT * FROM CourStudent WHERE selCourID = #{selCourID};
+    </select>
+
+    <select id="getCourStudentByStuID" parameterType="Integer" resultMap="CourStudentBean">
+        SELECT * FROM CourStudent WHERE StuID = #{stuID};
+    </select>
+
+    <select id="getCourStudentByCourClassID" parameterType="Integer" resultMap="CourStudentBean">
+        SELECT * FROM CourStudent WHERE CourClassID = #{courClassID};
+    </select>
+
+</mapper>

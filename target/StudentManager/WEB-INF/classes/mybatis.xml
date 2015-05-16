@@ -4,7 +4,12 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias type="com.zzx.graduate" alias="xxx" />
+        <typeAlias type="com.zzx.graduate.entity.ExperimentBean" alias="ExperimentBean" />
+        <typeAlias type="com.zzx.graduate.entity.ExpTaskBean" alias="ExpTaskBean" />
+        <typeAlias type="com.zzx.graduate.entity.ExpGroupBean" alias="ExpGroupBean" />
+        <typeAlias type="com.zzx.graduate.entity.ExpGroupMemBean" alias="ExpGroupMemBean" />
+        <typeAlias type="com.zzx.graduate.entity.TaskResultBean" alias="TaskResultBean" />
+        <typeAlias type="com.zzx.graduate.entity.CourseClassBean" alias="CourseClassBean" />
     </typeAliases>
 
     <environments default="development">
@@ -20,7 +25,12 @@
     </environments>
 
     <mappers>
-        <mapper resource="sqlmap/sqlmap-xxxx.xml" />
+        <mapper resource="sqlmap/sqlmap-experiment.xml" />
+        <mapper resource="sqlmap/sqlmap-expTask.xml" />
+        <mapper resource="sqlmap/sqlmap-expGroup.xml" />
+        <mapper resource="sqlmap/sqlmap-expGroupMem.xml" />
+        <mapper resource="sqlmap/sqlmap-taskResult.xml" />
+        <mapper resource="sqlmap/sqlmap-courseClass.xml" />
     </mappers>
 
 </configuration>
