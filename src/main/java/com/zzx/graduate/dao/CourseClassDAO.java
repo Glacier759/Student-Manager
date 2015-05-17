@@ -27,9 +27,6 @@ public class CourseClassDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class CourseClassDAO {
 
     public static CourseClassBean getCourseClassByID(Integer courClassID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             CourseClassBean bean = mapper.getCourseClassByID(courClassID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class CourseClassDAO {
 
     public static List<CourseClassBean> getCourseClassByCourID(Integer courID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<CourseClassBean> beans = mapper.getCourseClassByCourID(courID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class CourseClassDAO {
 
     public static List<CourseClassBean> getCourseClassByDictID(Integer dictID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<CourseClassBean> beans = mapper.getCourseClassByDictID(dictID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -78,8 +84,11 @@ public class CourseClassDAO {
 
     public static List<CourseClassBean> getCourseClassByTeachID(Integer teachID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<CourseClassBean> beans = mapper.getCourseClassByTeachID(teachID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -88,5 +97,4 @@ public class CourseClassDAO {
         }
         return null;
     }
-
 }

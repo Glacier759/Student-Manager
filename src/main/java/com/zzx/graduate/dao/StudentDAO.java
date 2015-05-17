@@ -27,9 +27,6 @@ public class StudentDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class StudentDAO {
 
     public static StudentBean getStudentByID(Integer stuID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             StudentBean bean = mapper.getStudentByID(stuID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class StudentDAO {
 
     public static List<StudentBean> getStudentByClassID(Integer classID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<StudentBean> beans = mapper.getStudentByClassID(classID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class StudentDAO {
 
     public static StudentBean getStudentByStuSN(String stuSN) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             StudentBean bean = mapper.getStudentByStuSN(stuSN);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -78,8 +84,11 @@ public class StudentDAO {
 
     public static StudentBean getStudentByIndex(Integer stuIndex) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             StudentBean bean = mapper.getStudentByIndex(stuIndex);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -91,8 +100,11 @@ public class StudentDAO {
 
     public static List<StudentBean> getStudentByName(String name) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<StudentBean> beans = mapper.getStudentByName(name);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();

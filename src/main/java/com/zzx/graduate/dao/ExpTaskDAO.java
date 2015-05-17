@@ -27,9 +27,6 @@ public class ExpTaskDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class ExpTaskDAO {
 
     public static ExpTaskBean getExpTaskByID(Integer taskID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             ExpTaskBean bean = mapper.getExpTaskByID(taskID);
             session.commit();
+            session.close();
             return bean;
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class ExpTaskDAO {
 
     public static List<ExpTaskBean> getExpTaskByExpID(Integer expID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpTaskBean> beans = mapper.getExpTaskByExpID(expID);
             session.commit();
+            session.close();
             return beans;
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class ExpTaskDAO {
 
     public static List<ExpTaskBean> getExpTaskByTaskIndex(Integer taskIndex) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpTaskBean> beans = mapper.getExpTaskByTaskIndex(taskIndex);
             session.commit();
+            session.close();
             return beans;
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -78,8 +84,11 @@ public class ExpTaskDAO {
 
     public static List<ExpTaskBean> getExpTaskByStartTime(String startTime) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpTaskBean> beans = mapper.getExpTaskByStartTime(startTime);
             session.commit();
+            session.close();
             return beans;
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -91,8 +100,11 @@ public class ExpTaskDAO {
 
     public static List<ExpTaskBean> getExpTaskByEndTime(String endTime) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpTaskBean> beans = mapper.getExpTaskByEndTime(endTime);
             session.commit();
+            session.close();
             return beans;
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -101,5 +113,4 @@ public class ExpTaskDAO {
         }
         return null;
     }
-
 }

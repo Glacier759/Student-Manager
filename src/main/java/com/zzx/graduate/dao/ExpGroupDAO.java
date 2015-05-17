@@ -27,9 +27,6 @@ public class ExpGroupDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class ExpGroupDAO {
 
     public static ExpGroupBean getExpGroupByID(Integer groupID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             ExpGroupBean bean = mapper.getExpGroupByID(groupID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class ExpGroupDAO {
 
     public static List<ExpGroupBean> getExpGroupByExpID(Integer expID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpGroupBean> beans = mapper.getExpGroupByExpID(expID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class ExpGroupDAO {
 
     public static void insertExpGroup(ExpGroupBean expGroupBean) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             mapper.insertExpGroup(expGroupBean);
             session.commit();
+            session.close();
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -74,4 +80,33 @@ public class ExpGroupDAO {
         }
     }
 
+    public static void uploadFileByExpGroup(ExpGroupBean expGroupBean) {
+        try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
+            mapper.uploadFileByExpGroup(expGroupBean);
+            session.commit();
+            session.close();
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+    }
+
+    public static List<ExpGroupBean> getExperimentByStuSN(String stuSN) {
+        try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
+            List<ExpGroupBean> beans = mapper.getExperimentByStuSN(stuSN);
+            session.commit();
+            session.close();
+            return beans;
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+        return null;
+    }
 }

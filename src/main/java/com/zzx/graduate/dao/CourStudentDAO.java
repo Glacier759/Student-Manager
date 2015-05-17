@@ -27,9 +27,6 @@ public class CourStudentDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class CourStudentDAO {
 
     public static CourStudentBean getCourStudentByID(Integer selCourID) {
         try{
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             CourStudentBean bean = mapper.getCourStudentByID(selCourID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class CourStudentDAO {
 
     public static List<CourStudentBean> getCourStudentByStuID(Integer stuID) {
         try{
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<CourStudentBean> beans = mapper.getCourStudentByStuID(stuID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class CourStudentDAO {
 
     public static List<CourStudentBean> getCourStudentByCourClassID(Integer courClassID) {
         try{
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<CourStudentBean> beans = mapper.getCourStudentByCourClassID(courClassID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();

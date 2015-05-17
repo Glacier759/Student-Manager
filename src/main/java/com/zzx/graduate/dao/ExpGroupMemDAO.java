@@ -27,9 +27,6 @@ public class ExpGroupMemDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class ExpGroupMemDAO {
 
     public static ExpGroupMemBean getExpGroupMemByID(Integer groupMemID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             ExpGroupMemBean bean = mapper.getExpGroupMemByID(groupMemID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class ExpGroupMemDAO {
 
     public static List<ExpGroupMemBean> getExpGroupMemByGroupID(Integer groupID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpGroupMemBean> beans = mapper.getExpGroupMemByGroupID(groupID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class ExpGroupMemDAO {
 
     public static List<ExpGroupMemBean> getExpGroupMemByStuID(Integer stuID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExpGroupMemBean> beans = mapper.getExpGroupMemByStuID(stuID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -78,8 +84,11 @@ public class ExpGroupMemDAO {
 
     public static void insertExpGroupMem(ExpGroupMemBean bean) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             mapper.insertExpGroupMem(bean);
             session.commit();
+            session.close();
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));

@@ -27,9 +27,6 @@ public class TaskResultDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -39,8 +36,11 @@ public class TaskResultDAO {
 
     public static TaskResultBean getTaskResultByID(Integer resultID) {
         try{
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             TaskResultBean bean = mapper.getTaskResultByID(resultID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -52,8 +52,11 @@ public class TaskResultDAO {
 
     public static List<TaskResultBean> getTaskResultByTaskID(Integer taskID) {
         try{
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<TaskResultBean> beans = mapper.getTaskResultByTaskID(taskID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -65,8 +68,11 @@ public class TaskResultDAO {
 
     public static List<TaskResultBean> getTaskResultBySubmitterID(Integer submitterID) {
         try{
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<TaskResultBean> beans = mapper.getTaskResultBySubmitterID(submitterID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();

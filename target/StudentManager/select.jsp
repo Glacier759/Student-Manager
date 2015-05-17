@@ -1,3 +1,4 @@
+<%@ page import="com.zzx.graduate.entity.StudentInfo" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
@@ -12,7 +13,6 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/head.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/content.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/foot.css">
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
 <%
@@ -36,98 +36,41 @@
         </ul>
     </nav>
 </header>
+<%
+    StudentInfo student = (StudentInfo)session.getAttribute("stu_info");
+%>
 <div id="content">
     <div >
         <table  class="datalist">
-            <caption>XXX，您本学期所有成绩</caption>
+            <caption><%=student.getStuName()%>，您所参与的所有实验</caption>
             <tr>
-                <th scope="col">科目</th>
-                <th scope="col">成绩</th>
-                <th scope="col">名次</th>
-                <th scope="col">学年</th>
-                <th scope="col">学期</th>
+                <th scope="col">实验ID</th>
+                <th scope="col">实验内容</th>
+                <th scope="col">小组成员</th>
+                <th scope="col">小组组长</th>
+                <th scope="col">状态</th>
+                <th scope="col">提交作业</th>
+                <th scope="col">成绩查看</th>
             </tr>
             <tr>
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
+                <th scope="row">1</th>
+                <td>词法分析器</td>
+                <td>张三,李四,王五,赵六,耿七</td>
+                <td>小二</td>
+                <td>未提交</td>
+                <td>一个按钮</td>
+                <td>一个按钮</td>
             </tr>
             <tr class="altrow">
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
-            </tr>
-            <tr>
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
-            </tr>
-            <tr class="altrow">
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
-            </tr>
-            <tr>
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
-            </tr>
-            <tr class="altrow">
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
-            </tr>
-            <tr>
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
-            </tr>
-            <tr class="altrow">
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
+                <th scope="row">1</th>
+                <td>一个OS的实现</td>
+                <td>二货,李四,王五,赵六,耿七</td>
+                <td>小三</td>
+                <td>已完成</td>
+                <td>一个按钮</td>
+                <td>一个按钮</td>
             </tr>
         </table>
-        <div class="select">
-            <p >
-                请输入您要查找的成绩的所属科目及学年：
-            </p>
-
-            <ul class="zhuceList">
-                <li class="zhuceList-li">科目：</li>
-                <li >
-                    <input id="couseName" name="couseName" class="zhuceList-li-input" type="text" value="couseName">
-                </li>
-            </ul>
-            <ul class="zhuceList">
-                <li class="zhuceList-li">学年：</li>
-                <li >
-                    <input id="timeC" name="timeC" class="zhuceList-li-input" type="text" value="timeC">
-                </li>
-            </ul>
-                <li class="zhuceList-li">成绩：</li>
-                <li >
-                    <input style="margin-bottom:30px"id="grad" name="grad" class="zhuceList-li-input" type="text" value="grad">
-                </li>
-            </ul>
-        </div>
-
     </div>
 </div>
 <footer class="footer"><h4>Copyright © 软件工程实践综合教学平台</h4></footer>

@@ -74,4 +74,11 @@ public interface MysqlOperation {
     public List<StudentBean> getStudentByName(String name);
 
     public void insertExpGroupMem(ExpGroupMemBean expGroupMemBean);
+
+    public void uploadFileByExpGroup(ExpGroupBean expGroupBean);
+
+    public List<ExpGroupBean> getExperimentByStuSN(String stuSN);
+
+    public List<ExpGroupMemBean> getExpGroupMenByGroupID(Integer groupID);
+
 }

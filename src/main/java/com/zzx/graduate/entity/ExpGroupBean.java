@@ -1,12 +1,19 @@
 package com.zzx.graduate.entity;
 
+import org.apache.log4j.Logger;
+
+import java.io.*;
+
 /**
  * Created by glacier on 15-5-14.
  */
 public class ExpGroupBean {
 
+    private static Logger logger = Logger.getLogger(ExpGroupBean.class.getName());
+
     private int groupID, expID;
-    private String groupName, prjName, prjDescription, attachFile;
+    private String groupName, prjName, prjDescription;
+    private byte[] attachFile;
     private int status;
 
     public ExpGroupBean() {
@@ -22,7 +29,7 @@ public class ExpGroupBean {
      * @param attachFile 附件
      * @param status 小组状态
      * */
-    public ExpGroupBean(int expID, int groupID, String groupName, String prjName, String prjDescription, String attachFile, int status) {
+    public ExpGroupBean(int expID, int groupID, String groupName, String prjName, String prjDescription, byte[] attachFile, int status) {
         this.expID = expID;
         this.groupID = groupID;
         this.groupName = groupName;
@@ -72,12 +79,34 @@ public class ExpGroupBean {
         this.prjDescription = prjDescription;
     }
 
-    public String getAttachFile() {
-        return attachFile;
+    public AttachFile getAttachFile() {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(attachFile));
+            AttachFile file = (AttachFile) ois.readObject();
+            return file;
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+        return null;
     }
 
-    public void setAttachFile(String attachFile) {
+    public void setAttachFile(byte[] attachFile) {
         this.attachFile = attachFile;
+    }
+
+    public void setAttachFile(AttachFile file) {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(file);
+            attachFile = baos.toByteArray();
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
     }
 
     public int getStatus() {

@@ -27,8 +27,6 @@ public class ExperimentDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
-            session = sessionFactory.openSession();
-            mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));
@@ -38,8 +36,11 @@ public class ExperimentDAO {
 
     public static ExperimentBean getExperimentByID(int expID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             ExperimentBean bean = mapper.getExperimentByID(expID);
             session.commit();
+            session.close();
             return bean;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -51,8 +52,11 @@ public class ExperimentDAO {
 
     public static List<ExperimentBean> getExperimentByClassID(int courClassID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExperimentBean> beans = mapper.getExperimentByClassID(courClassID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -64,8 +68,11 @@ public class ExperimentDAO {
 
     public static List<ExperimentBean> getExperimentByDictID(int dictID) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExperimentBean> beans = mapper.getExperimentByDictID(dictID);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -77,8 +84,11 @@ public class ExperimentDAO {
 
     public static List<ExperimentBean> getExperimentByCreateTime(String createTime) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExperimentBean> beans = mapper.getExperimentByCreateTime(createTime);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -90,8 +100,11 @@ public class ExperimentDAO {
 
     public static List<ExperimentBean> getExperimentBeforeTime(String beforeTime) {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExperimentBean> beans = mapper.getExperimentBeforeTime(beforeTime);
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -103,8 +116,11 @@ public class ExperimentDAO {
 
     public static List<ExperimentBean> getAllExperiment() {
         try {
+            session = sessionFactory.openSession();
+            mapper = session.getMapper(MysqlOperation.class);
             List<ExperimentBean> beans = mapper.getAllExperiments();
             session.commit();
+            session.close();
             return beans;
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -113,5 +129,4 @@ public class ExperimentDAO {
         }
         return null;
     }
-
 }
