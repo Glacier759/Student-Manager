@@ -1,89 +1,38 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%
+    if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
+        response.sendRedirect(request.getContextPath() + "/nogrant.jsp");
+    }
+%>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="main.css" type="text/css">
-    <link rel="stylesheet" href="head.css" type="text/css">
-    <link rel="stylesheet" href="content.css" type="text/css">
-    <link rel="stylesheet" href="foot.css" type="text/css">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Student Manager</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/main.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/head.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/content.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/foot.css">
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/jquery-2.1.1.min.js"></script>
 </head>
 <body>
-<span class="quick">
-    <a>
-        退出登录
-    </a>
-
+<%
+    if ( session.getAttribute("login") != null && session.getAttribute("login").equals("true") ) {
+%>
+    <span class="quick">
+        <a href="LogoutServlet">退出登录</a>
     </span>
+<%
+    }
+%>
 <header id="header">
     <h1>软件工程实践综合教学平台</h1>
-    <nav id="nav">
+    <nav >
         <ul>
-            <li><a href="index.html">首页</a></li>
-            <li><a>后台管理</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>实验资源管理</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>教师端</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a href="welcome.html" target="_blank">学生端</a>
-                <ul >
-                    <li ><a>实验查询</a></li>
-                    <li><div class="find">小组登录</div></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>在线测试</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>作业判定</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>学生Android端</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-
+            <li><a href="<%=request.getContextPath()%>/student.jsp">实验安排</a></li>
+            <li><a href="<%=request.getContextPath()%>/zhuce.jsp">实验注册</a></li>
+            <li><a href="<%=request.getContextPath()%>/select.jsp">成绩查询</a></li>
+            <li><a href="<%=request.getContextPath()%>/submit.jsp">作业提交</a></li>
+            <li><a href="<%=request.getContextPath()%>/test.jsp">在线测试</a></li>
         </ul>
     </nav>
 </header>

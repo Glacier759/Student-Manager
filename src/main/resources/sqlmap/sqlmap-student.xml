@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.zzx.graduate.entity.StudentBean">
+<mapper namespace="com.zzx.graduate.dao.MysqlOperation">
     <resultMap id="StudentBean" type="StudentBean">
         <result column="StuID" property="stuID" />
         <result column="ClassID" property="classID" />
@@ -30,7 +30,7 @@
         SELECT * FROM STUDENT WHERE StuSN = #{stuSN};
     </select>
 
-    <select id="getStudentByIndex" parameterType="Integer" resultMap="StuedntBean">
+    <select id="getStudentByIndex" parameterType="Integer" resultMap="StudentBean">
         SELECT * FROM STUDENT WHERE StuIndex = #{stuIndex};
     </select>
 

@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/lunbo.css">
         <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/lunbo.js"></script>
         <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/jquery-2.1.1.min.js"></script>
+        <script>
+
+        </script>
     </head>
 <body>
 <%
@@ -22,73 +25,15 @@
 <%
     }
 %>
-<header id="header"><h1>软件工程实践综合教学平台</h1>
-    <nav id="nav">
+<header id="header">
+    <h1>软件工程实践综合教学平台</h1>
+    <nav >
         <ul>
-            <li><a href="<%=request.getContextPath()%>/index.jsp">首页</a></li>
-            <li><a>后台管理</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>实验资源管理</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>教师端</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a href="<%=request.getContextPath()%>/welcome.jsp" target="_blank">学生端</a>
-                <ul >
-                    <li ><a>实验查询</a></li>
-                    <li><a href="<%=request.getContextPath()%>/groupLogin.jsp">小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>在线测试</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>作业判定</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
-            <li><a>学生Android端</a>
-                <ul>
-                    <li ><a>实验查询</a></li>
-                    <li><a>小组登录</a></li>
-                    <li><a>作业提交</a></li>
-                    <li><a>成绩查询</a></li>
-                    <li><a>在线考试</a></li>
-                </ul>
-            </li>
+            <li><a href="<%=request.getContextPath()%>/student.jsp">实验安排</a></li>
+            <li><a href="<%=request.getContextPath()%>/zhuce.jsp">实验注册</a></li>
+            <li><a href="<%=request.getContextPath()%>/select.jsp">成绩查询</a></li>
+            <li><a href="<%=request.getContextPath()%>/submit.jsp">作业提交</a></li>
+            <li><a href="<%=request.getContextPath()%>/test.jsp">在线测试</a></li>
         </ul>
     </nav>
 </header>
@@ -111,24 +56,24 @@
             <%
                 if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
             %>
-            <form id="login" method="post" action="LoginServlet">
+            <form id="login" action="LoginServlet" method="post">
                 <h4 class="login">用户登录</h4>
                 <ul class="user">
                     <li class="logo"></li>
                     <li>
-                        <input id="username" name="username" class="input_text" placeholder="学号"  type="text">
+                        <input id="username" name="username" required="required" class="input_text" placeholder="学号/职工号"  type="text">
                     </li>
                 </ul>
                 <ul class="user">
                     <li class="logoPass"></li>
                     <li>
-                        <input id="pass" name="password" class="input_text" placeholder="密码"  type="password">
+                        <input id="pass" name="password"  required="required" class="input_text" placeholder="密码"  type="password">
                     </li>
                 </ul>
-                <input name="user" class="check" type="checkbox" checked="checked" value="student" />学生
-                <input name="user" class="check" type="checkbox" value="teacher"  />教师
-                <input name="user" class="check" type="checkbox" value="manager" />管理员
-                <button type="submit" class="input_login"> 登陆</button>
+                <input name="user" class="check" type="radio" value="student" checked/>学生
+                <input name="user" class="check" type="radio" value="teacher"   />教师
+                <input name="user" class="check" type="radio" value="manager" />管理员
+                <input type="submit" class="input_login"  value="登录">
             </form>
             <%
                 }
@@ -186,26 +131,26 @@
                 <header class="content-2-header-r">友情链接</header>
                 <ul class="uList">
                     <span>学校官网</span>
-                    <li><a href="http://www.xiyou.edu.cn/">西邮主页</a></li>
-                    <li><a href="http://www.lib.xiyou.edu.cn/">西邮图书馆</a></li>
-                    <li><a href="http://222.24.19.201/">西邮教务处</a></li>
-                    <li><a href="http://news.xiyou.edu.cn/">西邮新闻</a></li>
+                    <li><a style="color:#43B49E" href="http://www.xiyou.edu.cn/">西邮主页</a></li>
+                    <li><a style="color:#43B49E" href="http://www.lib.xiyou.edu.cn/">西邮图书馆</a></li>
+                    <li><a style="color:#43B49E" href="http://222.24.19.201/">西邮教务处</a></li>
+                    <li><a style="color:#43B49E" href="http://news.xiyou.edu.cn/">西邮新闻</a></li>
                 </ul>
                 <ul class="uList">
                     <span>实验室</span>
-                    <li><a href="http://www.xiyoulinux.org/">西邮Linux兴趣小组</a></li>
-                    <li><a href="http://blog.xiyoulinux.org/">西邮Linux群博客</a></li>
-                    <li><a href="http://cs.xiyoulinux.org/">西邮Linux内部交流平台</a></li>
-                    <li><a href="http://xylinux.acmclub.com/">西邮LinuxOJ平台</a></li>
-                    <li><a href="http://www.xiyoumobile.com/">西邮移动应用开发实验室</a></li>
-                    <li><a>西邮网络协会</a></li>
+                    <li><a style="color:#43B49E" href="http://www.xiyoulinux.org/">西邮Linux兴趣小组</a></li>
+                    <li><a style="color:#43B49E" href="http://blog.xiyoulinux.org/">西邮Linux群博客</a></li>
+                    <li><a style="color:#43B49E" href="http://cs.xiyoulinux.org/">西邮Linux内部交流平台</a></li>
+                    <li><a style="color:#43B49E" href="http://xylinux.acmclub.com/">西邮LinuxOJ平台</a></li>
+                    <li><a style="color:#43B49E" href="http://www.xiyoumobile.com/">西邮移动应用开发实验室</a></li>
+                    <li><a style="color:#43B49E">西邮网络协会</a></li>
                 </ul>
                 <ul class="uList">
                     <span>其他高校</span>
-                    <li><a>西安交通大学</a></li>
-                    <li><a>西安工业大学</a></li>
-                    <li><a>西北工业大学大学</a></li>
-                    <li><a>西安财经大学</a></li>
+                    <li><a style="color:#43B49E" href="">西安交通大学</a></li>
+                    <li><a style="color:#43B49E" href="">西安工业大学</a></li>
+                    <li><a style="color:#43B49E" href="">西北工业大学大学</a></li>
+                    <li><a style="color:#43B49E" href="">西安财经大学</a></li>
                 </ul>
             </div>
     </div>

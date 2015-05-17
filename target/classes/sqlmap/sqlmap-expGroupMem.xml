@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.zzx.graduate.entity.ExpGroupMemBean">
+<mapper namespace="com.zzx.graduate.dao.MysqlOperation">
     <resultMap id="ExpGroupMemBean" type="ExpGroupMemBean">
         <result column="GroupMemID" property="groupMemID" />
         <result column="GroupID" property="groupID" />
@@ -10,15 +10,15 @@
         <result column="LeaderTag" property="leaderTag" />
     </resultMap>
 
-    <select id="getExpGroupMemByID" parameterType="Integer" resultMap="ExpGroupMem">
+    <select id="getExpGroupMemByID" parameterType="Integer" resultMap="ExpGroupMemBean">
         SELECT * FROM ExpGroupMem WHERE GroupMemID = #{groupMemID};
     </select>
 
-    <select id="getExpGroupMemByGroupID" parameterType="Integer" resultMap="ExpGroupMem">
+    <select id="getExpGroupMemByGroupID" parameterType="Integer" resultMap="ExpGroupMemBean">
         SELECT * FROM ExpGroupMem WHERE GroupID = #{groupID};
     </select>
 
-    <select id="getExpGroupMemByStuID" parameterType="Integer" resultMap="ExpGroupMem">
+    <select id="getExpGroupMemByStuID" parameterType="Integer" resultMap="ExpGroupMemBean">
         SELECT * FROM ExpGroupMem WHERE StuID = #{stuID};
     </select>
 

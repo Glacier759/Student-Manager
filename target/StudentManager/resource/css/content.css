@@ -60,6 +60,7 @@ p{
     height: 42px;
 }
 .input_text {
+    padding-left: 5px;
     border: none;
     display: inline-block;
     width: 180px;
@@ -82,7 +83,7 @@ input, button, textarea, select, optgroup, option {
     height: 16px;
     display: inline-block;
     vertical-align: middle;
-    background: url("img/icon_input.png") no-repeat scroll -16px 0px transparent;
+    background: url("../img/icon_input.png") no-repeat scroll -16px 0px transparent;
 }
 .logoPass{
     background-position: 0px 0px;
@@ -191,23 +192,42 @@ font-size: 14px;
 
 /*欢迎页面样式*/
 .asideL-w-1{
-    width: 980px;
-    height: 500px;
-    background-color: #ffffff;
+    width:980px;
+    height:412px;
+    margin: 0 auto;
+    text-align: center;
+    line-height:30px;
+    color: #ffc991;
+    background: url("../img/nogrant-bg.jpg")no-repeat scroll 0px 0px transparent;
+    background-size:100% 100%;
+    filter:alpha(opacity=60);
+    -moz-opacity:0.7;
+    -moz-opacity:0.7;
+    opacity: 0.7;
+    z-index: 0;
+}
+.asideL-w-1  div{
+    font-weight: bold;
+    font-size: 26px;
+    color: #fff;
+    padding-top: 100px;
+    opacity: 0.6;
 }
 .quick{
     display: inline-block;
     float: right;
     margin-right: 200px;
-}
-.welcome-w{
-    padding-top: 50px;
-    margin-top: 20px;
-    color: #2EAFBB;
+    color: #ffffff;
+    background-color: #3398a3;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
-    vertical-align: middle;
-
+    border-bottom: 1px solid #e6e673;
+    border-left: 1px solid #e6e673;
+    border-right: 1px solid #e6e673;
 }
+
 #nav ul li {
 
     position: relative;
@@ -218,6 +238,7 @@ font-size: 14px;
 }
 #nav ul li ul {
     display: none;
+    z-index: 9;
 }
 #nav ul li ul li{
     display: block;
@@ -307,4 +328,128 @@ caption{
     text-align: center;
 }
 
-/*小组登录*/
+/*实验小组注册*/
+#zhuce{
+    width: 600px;
+    margin: 20px auto;
+    height: auto;
+    background-color: #ffffff;
+    padding-bottom: 30px;
+ text-align: center;
+}
+.zhuce{
+    padding-top:30px ;
+    width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 20px;
+}
+.zhuceList{
+    width: 600px;
+    margin: 20px auto;
+
+}
+.zhuceList-li{
+    width: 100px;
+}
+.zhuceList-li-input{
+    padding-left: 12px;
+    width:300px;
+    border: 1px solid #758592;
+    height: 40px;
+}
+.zhuceList-liMember{
+    width: 100px;
+    margin-left: -320px;
+}
+.zhuceList-memberName{
+    border: 1px solid #758592;
+    width: 400px;
+    margin-left: 106px;
+    border-collapse:collapse;
+}
+.zhuceList-memberName caption{
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    margin-left:2px;
+}
+.zhuceList-memberName th ,td{
+    padding: 10px;
+    width: 200px;
+    font-size: 16px;
+    font-weight: normal;
+    border: 1px solid #758592;
+}
+.zhuceList-memberName td input{
+   width: 120px;
+    height: 20px;
+    border: none;
+    text-align: left;
+}
+.input_zhuce{
+    border: #CCCCCC;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+    background-color:#2EAFBB;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 15px;
+}
+
+/*成绩查询*/
+.select{
+    margin-top:30px ;
+    font-size: 20px;
+    text-align: center;
+}
+.select p{
+    margin-top:30px ;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+/*提交作业*/
+#submit{
+    width: 600px;
+    background-color: #ffffff;
+    height: 400px;
+    margin: 30px auto;
+    line-height: 80px;
+    text-align: center;
+    padding: 50px;
+}
+.submit{
+    color: #2EAFBB;
+    padding-left: 10px;
+
+}
+
+/*考试*/
+.question{
+    width: 945px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    padding-left: 120px;
+}
+.question ul li{
+    width: 800px;
+    height: 60px;
+    line-height: 30px;
+   display: block;
+}
+.jianda input{
+    padding-right: 20px;
+    text-align: center;
+    height: auto;
+    line-height: 30px;
+    min-height: 60px;
+    width: 700px;
+}
+.center{
+    margin-left: 305px;
+}

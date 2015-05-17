@@ -25,10 +25,10 @@ a{
     text-decoration:none;
 }
 a:link{
-    color: #fff3f3;
+    color: #fff;
 }
 a:visited{
-    color: #ff90d8;
+    color: #ffe7ff;
 }
 a:hover,a:active,a:focus{
     color: #55d8ff;

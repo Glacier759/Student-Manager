@@ -9,6 +9,4 @@ public class ExpGroupService {
 
     private static Logger logger = Logger.getLogger(ExpGroupService.class.getName());
 
-    //public void insert
-
 }

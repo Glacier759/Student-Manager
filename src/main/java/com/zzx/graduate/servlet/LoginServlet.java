@@ -19,7 +19,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //执行完方法体需要跳转至的jsp页面
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("welcome.jsp");
+        RequestDispatcher requestDispatcher = null;
         HttpSession session = request.getSession();
         String user = request.getParameter("user");
         if ( user != null ) {
@@ -28,10 +28,12 @@ public class LoginServlet extends HttpServlet {
                 StudentInfo student = new LoginByZFsoft(request.getParameter("username"), request.getParameter("password")).login();
                 if (student.loginSuccess()) {
                     //如果登陆成功
+                    requestDispatcher = request.getRequestDispatcher("welcome.jsp");
                     session.setAttribute("login", "true");
                     session.setAttribute("stu_info", student);
                 } else {
                     //否则
+                    requestDispatcher = request.getRequestDispatcher("loginfaild.jsp");
                     session.setAttribute("login", "false");
                 }
             } else if (user.equals("teacher")) {

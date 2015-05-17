@@ -103,7 +103,7 @@ public class ExperimentDAO {
 
     public static List<ExperimentBean> getAllExperiment() {
         try {
-            List<ExperimentBean> beans = mapper.getAllExperiment();
+            List<ExperimentBean> beans = mapper.getAllExperiments();
             session.commit();
             return beans;
         }catch (Exception e) {

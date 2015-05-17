@@ -19,7 +19,7 @@ public interface MysqlOperation {
 
     public List<ExperimentBean> getExperimentBeforeTime(String beforeTime);
 
-    public List<ExperimentBean> getAllExperiment();
+    public List<ExperimentBean> getAllExperiments();
 
     public ExpTaskBean getExpTaskByID(Integer taskID);
 

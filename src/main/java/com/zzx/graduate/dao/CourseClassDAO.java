@@ -27,6 +27,7 @@ public class CourseClassDAO {
         try {
             reader = Resources.getResourceAsReader("mybatis.xml");
             sessionFactory = new SqlSessionFactoryBuilder().build(reader);
+            sessionFactory.getConfiguration().addMapper(MysqlOperation.class);
             session = sessionFactory.openSession();
             mapper = session.getMapper(MysqlOperation.class);
         } catch (Exception e) {
