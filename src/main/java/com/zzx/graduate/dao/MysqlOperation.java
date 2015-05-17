@@ -72,4 +72,6 @@ public interface MysqlOperation {
     public StudentBean getStudentByIndex(Integer stuIndex);
 
     public List<StudentBean> getStudentByName(String name);
+
+    public void insertExpGroupMem(ExpGroupMemBean expGroupMemBean);
 }

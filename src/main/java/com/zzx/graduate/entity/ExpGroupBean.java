@@ -87,4 +87,17 @@ public class ExpGroupBean {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "ExpGroupBean{" +
+                "groupID=" + groupID +
+                ", expID=" + expID +
+                ", groupName='" + groupName + '\'' +
+                ", prjName='" + prjName + '\'' +
+                ", prjDescription='" + prjDescription + '\'' +
+                ", attachFile='" + attachFile + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

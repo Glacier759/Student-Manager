@@ -94,4 +94,19 @@ public class StudentInfo {
         return login;
     }
 
+    @Override
+    public String toString() {
+        return "StudentInfo{" +
+                "login=" + login +
+                ", stuNumber='" + stuNumber + '\'' +
+                ", stuName='" + stuName + '\'' +
+                ", stuSex='" + stuSex + '\'' +
+                ", stuBirthday='" + stuBirthday + '\'' +
+                ", stuNation='" + stuNation + '\'' +
+                ", stuIDCard='" + stuIDCard + '\'' +
+                ", stuDepartment='" + stuDepartment + '\'' +
+                ", stuMajor='" + stuMajor + '\'' +
+                ", stuClass='" + stuClass + '\'' +
+                '}';
+    }
 }

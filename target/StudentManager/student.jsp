@@ -45,11 +45,12 @@
     <table  class="datalist">
         <caption>实验安排 2015.3 - 2015.7</caption>
         <tr>
-            <th scope="col">实验名称</th>
-            <th scope="col">时间</th>
-            <th scope="col">地点</th>
-            <th scope="col">指导老师</th>
-            <th scope="col">报告提交日期</th>
+            <th scope="col">实验ID</th>
+            <th scope="col">创建时间</th>
+            <th scope="col">班级ID</th>
+            <th scope="col">实验安排</th>
+            <th scope="col">查看详细</th>
+            <th scope="col">实验注册</th>
         </tr>
         <%--<%--%>
             <%--StudentInfo student = (StudentInfo)session.getAttribute("stu_info");--%>
@@ -60,22 +61,24 @@
 <%--//                if ( i % 2 == 1 ) {--%>
         <%--%>--%>
             <tr>
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
+                <th scope="row">1</th>
+                <td>2014-10-24</td>
+                <td>计科1204</td>
+                <td>词法分析器</td>
+                <td>戳</td>
+                <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=1">干</a></td>
             </tr>
         <%--<%--%>
                 <%--}--%>
                 <%--else {--%>
         <%--%>--%>
             <tr class="altrow">
-                <th scope="row">微机原理</th>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
-                <td>3.4</td>
+                <th scope="row">2</th>
+                <td>2014-08-25</td>
+                <td>计科1205</td>
+                <td>内核</td>
+                <td>戳</td>
+                <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=2">干</a></td>
             </tr>
         <%--<%--%>
                 <%--}--%>

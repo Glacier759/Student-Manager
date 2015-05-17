@@ -75,4 +75,15 @@ public class ExpGroupMemDAO {
         }
         return null;
     }
+
+    public static void insertExpGroupMem(ExpGroupMemBean bean) {
+        try {
+            mapper.insertExpGroupMem(bean);
+            session.commit();
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+    }
 }
