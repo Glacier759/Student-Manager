@@ -72,7 +72,7 @@
                     }
             %>
                 <th scope="row"><%=bean.getExpID()%></th>
-                <td><%=bean.getPrjName()%></td>
+                <td><%=bean.getPrjDescription()%></td>
                 <%
                     String members = "";
                     String leader = "";
@@ -85,7 +85,8 @@
                             members = "," + service.getStuNameByStuID(memBean.getStuID()).getName();
                         }
                     }
-                    members = members.substring(1);
+                    if ( members.length() > 0 )
+                        members = members.substring(1);
                 %>
                 <td><%=members%></td>
                 <td><%=leader%></td>
@@ -93,7 +94,7 @@
             <%
                 if ( bean.getAttachFile() != null ) {
             %>
-                <td><a href="<%=request.getContextPath()%>"><%=bean.getAttach2File().toFile()%></a> </td>
+                <td><a href="<%=request.getContextPath()%>"><%=bean.getAttach2File().toFile()%></a </td>
             <%
                 } else {
             %>

@@ -2,6 +2,7 @@
 <%@ page import="com.zzx.graduate.entity.ExperimentBean" %>
 <%@ page import="com.zzx.graduate.entity.StudentInfo" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.zzx.graduate.entity.CourseClassBean" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
@@ -57,13 +58,19 @@
             ExperimentService service = new ExperimentService(student.getStuNumber());
             List<ExperimentBean> beans = service.getAllExperiment();
             for ( int i = 1; i <= beans.size(); i ++ ) {
-                ExperimentBean bean = beans.get(i-1);
+                ExperimentBean bean = beans.get(i - 1);
+                CourseClassBean classBean = service.getCourseClassByCourClassID(bean.getCourClassID());
+                String className = "";
+                if ( classBean != null ) {
+                    className += classBean.getCourID();
+                }
+
                 if ( i % 2 == 1 ) {
         %>
             <tr>
                 <th scope="row"><%=bean.getExpID()%></th>
                 <td><%=bean.getCreateTime()%></td>
-                <td><%=bean.getCourClassID()%></td>
+                <td><%=className%></td>
                 <td><%=bean.getExpPlan()%></td>
                 <td>戳</td>
                 <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=<%=bean.getExpID()%>">干</a></td>
@@ -75,7 +82,7 @@
             <tr class="altrow">
                 <th scope="row"><%=bean.getExpID()%></th>
                 <<td><%=bean.getCreateTime()%></td>
-                <td><%=bean.getCourClassID()%></td>
+                <td><%=className%></td>
                 <td><%=bean.getExpPlan()%></td>
                 <td>戳</td>
                 <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=<%=bean.getExpID()%>">干</a></td>

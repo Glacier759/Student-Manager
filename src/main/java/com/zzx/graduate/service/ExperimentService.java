@@ -10,6 +10,8 @@ import com.zzx.graduate.entity.ExpTaskBean;
 import com.zzx.graduate.entity.ExperimentBean;
 import org.apache.log4j.Logger;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 /**
@@ -28,16 +30,24 @@ public class ExperimentService {
         return ExperimentDAO.getAllExperiment();
     }
 
-    public List<CourseClassBean> getCourseClassByCourClassID(int courClassID) {
-        return CourseClassDAO.getCourseClassByCourID(courClassID);
+    public CourseClassBean getCourseClassByCourClassID(int courClassID) {
+        return CourseClassDAO.getCourseClassByID(courClassID);
     }
 
     public ExperimentBean getExperimentByExpID(int expID) {
         return ExperimentDAO.getExperimentByID(expID);
     }
 
-    public List<ExpTaskBean> getExpTaskByExpID(int expID) {
-        return ExpTaskDAO.getExpTaskByExpID(expID);
+    public ExpTaskBean getExpTaskByExpID(int expID) {
+        try {
+            List<ExpTaskBean> beans = ExpTaskDAO.getExpTaskByExpID(expID);
+            return beans.get(0);
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+        return null;
     }
 
     public List<ExpGroupBean> getExpGroupByExpID(int expID) {

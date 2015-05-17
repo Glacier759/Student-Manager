@@ -1,6 +1,4 @@
 <%@ page import="com.zzx.graduate.entity.StudentInfo" %>
-<%@ page import="com.zzx.graduate.entity.ExpGroupBean" %>
-<%@ page import="com.zzx.graduate.service.ExpGroupService" %>
 <%@ page import="com.zzx.graduate.entity.ExperimentBean" %>
 <%@ page import="com.zzx.graduate.service.ExperimentService" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -47,6 +45,9 @@
     StudentInfo student = (StudentInfo)session.getAttribute("stu_info");
     ExperimentService service = new ExperimentService(student.getStuNumber());
     String expID = request.getParameter("expID");
+    if ( expID == null ) {
+        response.sendRedirect(request.getContextPath() + "/student.jsp");
+    }
     ExperimentBean experimentBean = service.getExperimentByExpID(new Integer(expID));
 %>
 <div id="content">
@@ -75,7 +76,7 @@
             <ul class="zhuceList">
                 <li class="zhuceList-li">实验题目：</li>
                 <li >
-                    <input id="testName" name="testName" class="zhuceList-li-input" type="text" value="<%=experimentBean.getExpID()%>">
+                    <input id="testName" name="testName" class="zhuceList-li-input" type="text" value="<%=service.getExpTaskByExpID(experimentBean.getExpID()).getTaskName()%>">
                 </li>
             </ul>
             <ul class="zhuceList">
@@ -87,7 +88,7 @@
             <ul class="zhuceList">
                 <li class="zhuceList-li">项目描述：</li>
                 <li >
-                    <input id="introduce" name="introduce" class="zhuceList-li-input" type="text" value="<%=experimentBean.getExpPlan()%>">
+                    <input id="introduce" name="introduce" class="zhuceList-li-input" type="text" value="<%=service.getExpTaskByExpID(experimentBean.getExpID()).getDescription()%>">
                 </li>
             </ul>
             <ul class="zhuceList">

@@ -5,7 +5,7 @@ package com.zzx.graduate.entity;
  */
 public class CourseClassBean {
 
-    private int courClassID, courID, dictID, teacherID;
+    private int courClassID, courID, dictID, teachID;
     private String semester;
     private int status;
 
@@ -17,15 +17,15 @@ public class CourseClassBean {
      * @param courClassID 课程班编号
      * @param courID 课程ID
      * @param dictID 数据字典ID
-     * @param teacherID 教师ID
+     * @param teachID 教师ID
      * @param semester 开学时间
      * @param status 状态
      * */
-    public CourseClassBean(int courClassID, int courID, int dictID, int teacherID, String semester, int status) {
+    public CourseClassBean(int courClassID, int courID, int dictID, int teachID, String semester, int status) {
         this.courClassID = courClassID;
         this.courID = courID;
         this.dictID = dictID;
-        this.teacherID = teacherID;
+        this.teachID = teachID;
         this.semester = semester;
         this.status = status;
     }
@@ -54,12 +54,12 @@ public class CourseClassBean {
         this.dictID = dictID;
     }
 
-    public int getTeacherID() {
-        return teacherID;
+    public int getTeachID() {
+        return teachID;
     }
 
-    public void setTeacherID(int teacherID) {
-        this.teacherID = teacherID;
+    public void setTeachID(int teachID) {
+        this.teachID = teachID;
     }
 
     public String getSemester() {

@@ -47,7 +47,13 @@
 <div id="content">
     <div id="submit">
         <form id="submitF" action="<%=request.getContextPath()%>/UploadServlet" method="post" enctype="multipart/form-data">
-            <%session.setAttribute("groupID", new Integer(request.getParameter("groupID")));%>
+            <%
+                String groupID = request.getParameter("groupID");
+                if ( groupID == null ) {
+                    response.sendRedirect(request.getContextPath() + "/select.jsp");
+                }
+                session.setAttribute("groupID", new Integer(groupID));
+            %>
             <label for="file">文件名:</label>
             <input class="submit" type="file" name="file" id="file" />
             <br />

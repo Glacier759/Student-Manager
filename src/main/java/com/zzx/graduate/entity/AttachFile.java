@@ -55,12 +55,15 @@ public class AttachFile implements Serializable {
 
     public String toFile() {
         try {
-            String path = "./tmp/download_file/" + fileName;
+            String path_dir = "./tmp/download_file/";
+            String path = path_dir + fileName;
             File tmpFile = new File(path);
-            if ( !tmpFile.exists() )
+            if ( !tmpFile.exists() ) {
+                new File(path_dir).mkdirs();
                 tmpFile.createNewFile();
+            }
             FileUtils.writeByteArrayToFile(new File(path), fileBytes);
-            return new File(path).getAbsolutePath();
+            return (new File(".").getAbsolutePath());
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));

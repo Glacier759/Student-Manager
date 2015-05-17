@@ -1,9 +1,13 @@
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/CourStudentBean.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/TaskResultBean.java
+/home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/servlet/UploadServlet.java
+/home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/service/SelectService.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/StudentBean.java
+/home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/servlet/RegisterServlet.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/StudentInfo.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/util/HttpUtil.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/service/ExpGroupService.java
+/home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/util/StreamUtil.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/ExpGroupBean.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/servlet/LoginServlet.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/service/LoginByZFsoft.java
@@ -15,6 +19,7 @@
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/dao/TaskResultDAO.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/ExpTaskBean.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/dao/StudentDAO.java
+/home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/AttachFile.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/test/Test.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/dao/ExperimentDAO.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/ExpGroupMemBean.java
@@ -22,5 +27,6 @@
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/dao/ExpGroupMemDAO.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/entity/ExperimentInfo.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/service/ExperimentService.java
+/home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/service/TestService.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/dao/CourseClassDAO.java
 /home/glacier/Java/IDE/IDEA/IdeaProjects/StudentManager/src/main/java/com/zzx/graduate/servlet/LogoutServlet.java
