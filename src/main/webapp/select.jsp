@@ -1,4 +1,8 @@
 <%@ page import="com.zzx.graduate.entity.StudentInfo" %>
+<%@ page import="com.zzx.graduate.service.SelectService" %>
+<%@ page import="com.zzx.graduate.entity.ExpGroupBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.zzx.graduate.entity.ExpGroupMemBean" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
@@ -38,6 +42,8 @@
 </header>
 <%
     StudentInfo student = (StudentInfo)session.getAttribute("stu_info");
+    SelectService service = new SelectService();
+    List<ExpGroupBean> beans = service.getExperimentByStuSN(student.getStuNumber());
 %>
 <div id="content">
     <div >
@@ -52,23 +58,53 @@
                 <th scope="col">提交作业</th>
                 <th scope="col">成绩查看</th>
             </tr>
+            <%
+                for ( int index = 1; index <= beans.size(); index ++ ) {
+                    ExpGroupBean bean = beans.get(index-1);
+                    if ( index % 2 == 1 ) {
+            %>
             <tr>
-                <th scope="row">1</th>
-                <td>词法分析器</td>
-                <td>张三,李四,王五,赵六,耿七</td>
-                <td>小二</td>
-                <td>未提交</td>
-                <td>一个按钮</td>
-                <td>一个按钮</td>
-            </tr>
+            <%
+                    } else {
+            %>
             <tr class="altrow">
-                <th scope="row">1</th>
-                <td>一个OS的实现</td>
-                <td>二货,李四,王五,赵六,耿七</td>
-                <td>小三</td>
-                <td>已完成</td>
+            <%
+                    }
+            %>
+                <th scope="row"><%=bean.getExpID()%></th>
+                <td><%=bean.getPrjName()%></td>
+                <%
+                    String members = "";
+                    String leader = "";
+                    List<ExpGroupMemBean> memBeans = service.getExpGroupMemByGroupID(bean.getGroupID());
+                    for ( ExpGroupMemBean memBean : memBeans ) {
+                        if ( memBean.getLeaderTag() == 1 ) {
+                            leader = service.getStuNameByStuID(memBean.getStuID()).getName();
+                        }
+                        else {
+                            members = "," + service.getStuNameByStuID(memBean.getStuID()).getName();
+                        }
+                    }
+                    members = members.substring(1);
+                %>
+                <td><%=members%></td>
+                <td><%=leader%></td>
+                <td><%=bean.getStatus()%></td>
+            <%
+                if ( bean.getAttachFile() != null ) {
+            %>
+                <td><a href="<%=request.getContextPath()%>"><%=bean.getAttach2File().toFile()%></a> </td>
+            <%
+                } else {
+            %>
+                <td><a href="<%=request.getContextPath()%>/submit.jsp?groupID=<%=bean.getGroupID()%>">UP</a></td>
+            <%
+                }
+            %>
                 <td>一个按钮</td>
-                <td>一个按钮</td>
+            <%
+                }
+            %>
             </tr>
         </table>
     </div>

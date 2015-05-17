@@ -52,38 +52,38 @@
             <th scope="col">查看详细</th>
             <th scope="col">实验注册</th>
         </tr>
-        <%--<%--%>
-            <%--StudentInfo student = (StudentInfo)session.getAttribute("stu_info");--%>
-            <%--ExperimentService service = new ExperimentService(student.getStuNumber());--%>
-            <%--List<ExperimentBean> beans = service.getAllExperiment();--%>
-            <%--for ( int i = 1; i <= beans.size(); i ++ ) {--%>
-<%--//                ExperimentBean bean = beans.get(i-1);--%>
-<%--//                if ( i % 2 == 1 ) {--%>
-        <%--%>--%>
+        <%
+            StudentInfo student = (StudentInfo)session.getAttribute("stu_info");
+            ExperimentService service = new ExperimentService(student.getStuNumber());
+            List<ExperimentBean> beans = service.getAllExperiment();
+            for ( int i = 1; i <= beans.size(); i ++ ) {
+                ExperimentBean bean = beans.get(i-1);
+                if ( i % 2 == 1 ) {
+        %>
             <tr>
-                <th scope="row">1</th>
-                <td>2014-10-24</td>
-                <td>计科1204</td>
-                <td>词法分析器</td>
+                <th scope="row"><%=bean.getExpID()%></th>
+                <td><%=bean.getCreateTime()%></td>
+                <td><%=bean.getCourClassID()%></td>
+                <td><%=bean.getExpPlan()%></td>
                 <td>戳</td>
-                <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=1">干</a></td>
+                <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=<%=bean.getExpID()%>">干</a></td>
             </tr>
-        <%--<%--%>
-                <%--}--%>
-                <%--else {--%>
-        <%--%>--%>
+        <%
+                }
+                else {
+        %>
             <tr class="altrow">
-                <th scope="row">2</th>
-                <td>2014-08-25</td>
-                <td>计科1205</td>
-                <td>内核</td>
+                <th scope="row"><%=bean.getExpID()%></th>
+                <<td><%=bean.getCreateTime()%></td>
+                <td><%=bean.getCourClassID()%></td>
+                <td><%=bean.getExpPlan()%></td>
                 <td>戳</td>
-                <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=2">干</a></td>
+                <td><a href="<%=request.getContextPath()%>/zhuce.jsp?expID=<%=bean.getExpID()%>">干</a></td>
             </tr>
-        <%--<%--%>
-                <%--}--%>
-<%--//            }--%>
-        <%--%>--%>
+        <%
+                }
+            }
+        %>
     </table>
 </div>
 </div>

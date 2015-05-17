@@ -32,6 +32,10 @@ public class ExperimentService {
         return CourseClassDAO.getCourseClassByCourID(courClassID);
     }
 
+    public ExperimentBean getExperimentByExpID(int expID) {
+        return ExperimentDAO.getExperimentByID(expID);
+    }
+
     public List<ExpTaskBean> getExpTaskByExpID(int expID) {
         return ExpTaskDAO.getExpTaskByExpID(expID);
     }

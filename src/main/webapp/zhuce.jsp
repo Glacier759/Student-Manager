@@ -1,4 +1,8 @@
 <%@ page import="com.zzx.graduate.entity.StudentInfo" %>
+<%@ page import="com.zzx.graduate.entity.ExpGroupBean" %>
+<%@ page import="com.zzx.graduate.service.ExpGroupService" %>
+<%@ page import="com.zzx.graduate.entity.ExperimentBean" %>
+<%@ page import="com.zzx.graduate.service.ExperimentService" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
@@ -41,6 +45,9 @@
 </header>
 <%
     StudentInfo student = (StudentInfo)session.getAttribute("stu_info");
+    ExperimentService service = new ExperimentService(student.getStuNumber());
+    String expID = request.getParameter("expID");
+    ExperimentBean experimentBean = service.getExperimentByExpID(new Integer(expID));
 %>
 <div id="content">
     <div id="groupLogin">
@@ -68,19 +75,19 @@
             <ul class="zhuceList">
                 <li class="zhuceList-li">实验题目：</li>
                 <li >
-                    <input id="testName" name="testName" class="zhuceList-li-input" type="text" value="">
+                    <input id="testName" name="testName" class="zhuceList-li-input" type="text" value="<%=experimentBean.getExpID()%>">
                 </li>
             </ul>
             <ul class="zhuceList">
                 <li class="zhuceList-li">开始时间：</li>
                 <li >
-                    <input id="timeS" name="timeS" class="zhuceList-li-input" type="text" value="">
+                    <input id="timeS" name="timeS" class="zhuceList-li-input" type="text" value="<%=experimentBean.getCreateTime()%>">
                 </li>
             </ul>
             <ul class="zhuceList">
                 <li class="zhuceList-li">项目描述：</li>
                 <li >
-                    <input id="introduce" name="introduce" class="zhuceList-li-input" type="text" value="">
+                    <input id="introduce" name="introduce" class="zhuceList-li-input" type="text" value="<%=experimentBean.getExpPlan()%>">
                 </li>
             </ul>
             <ul class="zhuceList">

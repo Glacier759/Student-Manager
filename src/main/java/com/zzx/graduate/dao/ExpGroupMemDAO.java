@@ -82,11 +82,11 @@ public class ExpGroupMemDAO {
         return null;
     }
 
-    public static void insertExpGroupMem(ExpGroupMemBean bean) {
+    public static void insertExpGroupMem(ExpGroupMemBean expGroupMemBean) {
         try {
             session = sessionFactory.openSession();
             mapper = session.getMapper(MysqlOperation.class);
-            mapper.insertExpGroupMem(bean);
+            mapper.insertExpGroupMem(expGroupMemBean);
             session.commit();
             session.close();
         }catch (Exception e) {

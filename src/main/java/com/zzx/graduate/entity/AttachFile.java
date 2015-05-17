@@ -1,7 +1,9 @@
 package com.zzx.graduate.entity;
 
+import com.zzx.graduate.util.StreamUtil;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import sun.swing.FilePane;
 
 import java.io.*;
 
@@ -13,15 +15,26 @@ public class AttachFile implements Serializable {
     private static Logger logger = Logger.getLogger(AttachFile.class.getName());
 
     private String fileName;
-    private InputStream fileStream;
+    private byte[] fileBytes;
 
     public AttachFile() {
 
     }
 
-    public AttachFile(String fileName, InputStream fileStream) {
+    public AttachFile(File attachFile) {
+        try {
+            this.fileName = attachFile.getName();
+            this.fileBytes = StreamUtil.toByteArray(FileUtils.openInputStream(attachFile));
+        }catch (Exception e) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            e.printStackTrace(new PrintStream(baos));
+            logger.error(baos.toString());
+        }
+    }
+
+    public AttachFile(String fileName, byte[] fileBytes) {
         this.fileName = fileName;
-        this.fileStream = fileStream;
+        this.fileBytes = fileBytes;
     }
 
     public String getFileName() {
@@ -32,12 +45,12 @@ public class AttachFile implements Serializable {
         this.fileName = fileName;
     }
 
-    public InputStream getFileStream() {
-        return fileStream;
+    public byte[] getFileBytes() {
+        return fileBytes;
     }
 
-    public void setFileStream(InputStream fileStream) {
-        this.fileStream = fileStream;
+    public void setFileBytes(byte[] fileBytes) {
+        this.fileBytes = fileBytes;
     }
 
     public String toFile() {
@@ -46,8 +59,8 @@ public class AttachFile implements Serializable {
             File tmpFile = new File(path);
             if ( !tmpFile.exists() )
                 tmpFile.createNewFile();
-            FileUtils.copyInputStreamToFile(fileStream, new File(path));
-            return path;
+            FileUtils.writeByteArrayToFile(new File(path), fileBytes);
+            return new File(path).getAbsolutePath();
         }catch (Exception e) {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             e.printStackTrace(new PrintStream(baos));

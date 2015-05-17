@@ -23,8 +23,8 @@
     </select>
 
     <insert id="insertExpGroupMem" parameterType="ExpGroupMemBean" useGeneratedKeys="true" keyProperty="groupID">
-        INSERT INTO ExpGroupMen(GroupID,StuID,MemTask,LeaderTag)
-                    VALUES(#{GroupID},#{StuID},#{MemTask},#{LeaderTag});
+        INSERT INTO ExpGroupMem(GroupID,StuID,MemTask,LeaderTag)
+                    VALUES(#{groupID},#{stuID},#{memTask},#{leaderTag});
     </insert>
 
 </mapper>

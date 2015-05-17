@@ -30,13 +30,8 @@
     </update>
 
     <select id="getExperimentByStuSN" parameterType="String" resultMap="ExpGroupBean">
-        SELECT ExpGroup.ExpID, ExpGroup.PrjName, ExpGroup.Status, ExpGroup.GroupID,
-               ExpGroup.GroupName, ExpGroup.PrjDescription, ExpGroup.AttachFile
-          FROM ExpGroup,Experiment,CourStudent,STUDENT
-                    WHERE Experiment.ExpID = ExpGroup.ExpID
-                      AND Experiment.CourClassID = CourStudent.CourClassID
-                      AND CourStudent.StuID = STUDENT.StuID
-                      AND STUDENT.StuSN = #{stuSN};
+        SELECT ExpGroup.* FROM ExpGroup,STUDENT,ExpGroupMem
+                    WHERE STUDENT.StuSN = #{stuSN} AND ExpGroup.GroupID = ExpGroupMem.GroupID AND ExpGroupMem.StuID = STUDENT.StuID;
     </select>
 
 </mapper>

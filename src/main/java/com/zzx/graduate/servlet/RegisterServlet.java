@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
         groupBean.setGroupName(request.getParameter("groupName"));
         groupBean.setPrjName(request.getParameter("testName"));
         groupBean.setPrjDescription(request.getParameter("introduce"));
+        System.out.println(groupBean);
         service.insertExpGroup(groupBean);
 
         //2. 根据表单提交的成员信息, 以此找到其对应的学生ID
@@ -50,17 +51,21 @@ public class RegisterServlet extends HttpServlet {
                 ExpGroupMemBean groupMemBean = new ExpGroupMemBean();
                 groupMemBean.setGroupID(groupBean.getGroupID());
                 groupMemBean.setStuID(studentBean.getStuID());
-                if ( student.getStuNumber().equals(studentBean.getStuSN()) ) {
-                    groupMemBean.setLeaderTag(1);
-                    groupMemBean.setMemTask("leader");
-                }
-                else {
-                    groupMemBean.setLeaderTag(0);
-                    groupMemBean.setMemTask("member");
-                }
+                groupMemBean.setLeaderTag(0);
+                groupMemBean.setMemTask("member");
+                System.out.println(groupMemBean);
                 service.insertExpGroupMem(groupMemBean);
             }
         }
+        ExpGroupMemBean groupMemBean = new ExpGroupMemBean();
+        StudentBean studentBean = service.getStudentByStuSN(student.getStuNumber());
+        groupMemBean.setGroupID(groupBean.getGroupID());
+        groupMemBean.setStuID(studentBean.getStuID());
+        groupMemBean.setLeaderTag(1);
+        groupMemBean.setMemTask("leader");
+        System.out.println(groupMemBean);
+        service.insertExpGroupMem(groupMemBean);
+
         requestDispatcher.forward(request, response);
     }
 

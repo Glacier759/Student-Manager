@@ -79,8 +79,14 @@ public class ExpGroupBean {
         this.prjDescription = prjDescription;
     }
 
-    public AttachFile getAttachFile() {
+    public byte[] getAttachFile() {
+        return attachFile;
+    }
+
+    public AttachFile getAttach2File() {
         try {
+            if ( attachFile == null )
+                return null;
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(attachFile));
             AttachFile file = (AttachFile) ois.readObject();
             return file;
@@ -96,7 +102,7 @@ public class ExpGroupBean {
         this.attachFile = attachFile;
     }
 
-    public void setAttachFile(AttachFile file) {
+    public void setAttach2File(AttachFile file) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);

@@ -67,4 +67,15 @@ public class ExpGroupMemBean {
     public void setLeaderTag(int leaderTag) {
         this.leaderTag = leaderTag;
     }
+
+    @Override
+    public String toString() {
+        return "ExpGroupMemBean{" +
+                "groupMemID=" + groupMemID +
+                ", groupID=" + groupID +
+                ", stuID=" + stuID +
+                ", memTask='" + memTask + '\'' +
+                ", leaderTag=" + leaderTag +
+                '}';
+    }
 }

@@ -8,7 +8,7 @@
         <result column="GroupName" property="groupName" />
         <result column="PrjName" property="prjName" />
         <result column="PrjDescription" property="prjDescription" />
-        <result column="AttachFile" property="attachFile" />
+        <result column="AttachFile" property="attachFile" javaType="byte[]" jdbcType="BLOB" typeHandler="org.apache.ibatis.type.ByteArrayTypeHandler" />
         <result column="Status" property="status" />
     </resultMap>
 
@@ -24,5 +24,14 @@
         INSERT INTO ExpGroup(ExpID,GroupName,PrjName,PrjDescription,AttachFile,Status)
                   VALUES(#{expID},#{groupName},#{prjName},#{prjDescription},#{attachFile},#{status});
     </insert>
+
+    <update id="uploadFileByExpGroup" parameterType="ExpGroupBean">
+        UPDATE ExpGroup SET AttachFile = #{attachFile} WHERE GroupID = #{groupID};
+    </update>
+
+    <select id="getExperimentByStuSN" parameterType="String" resultMap="ExpGroupBean">
+        SELECT ExpGroup.* FROM ExpGroup,STUDENT,ExpGroupMem
+                    WHERE STUDENT.StuSN = #{stuSN} AND ExpGroup.GroupID = ExpGroupMem.GroupID AND ExpGroupMem.StuID = STUDENT.StuID;
+    </select>
 
 </mapper>

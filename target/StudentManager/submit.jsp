@@ -3,6 +3,9 @@
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
         response.sendRedirect(request.getContextPath() + "/nogrant.jsp");
     }
+    if ( request.getParameter("groupID") == null ) {
+        response.sendRedirect(request.getContextPath() + "/select.jsp");
+    }
 %>
 <html>
 <head>
@@ -12,7 +15,12 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/head.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/content.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/foot.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/lunbo.css">
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/lunbo.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/jquery-2.1.1.min.js"></script>
+    <script>
+
+    </script>
 </head>
 <body>
 <%
@@ -37,22 +45,13 @@
     </nav>
 </header>
 <div id="content">
-    <div id="groupLogin">
-        <form id="login">
-            <h4 class="login">作业提交</h4>
-            <ul class="user">
-                <li class="logo"></li>
-                <li>
-                    <input id="username" name="username" class="input_text" placeholder="小组编号"  type="text">
-                </li>
-            </ul>
-            <ul >
-                <li></li>
-                <li>
-                    <input type="button" class="input_login" value="上传"/><br><br>
-                </li>
-            </ul>
-            <input type="submit" class="input_login" value="登录"/><br><br>
+    <div id="submit">
+        <form id="submitF" action="<%=request.getContextPath()%>/UploadServlet" method="post" enctype="multipart/form-data">
+            <%session.setAttribute("groupID", new Integer(request.getParameter("groupID")));%>
+            <label for="file">文件名:</label>
+            <input class="submit" type="file" name="file" id="file" />
+            <br />
+            <input type="submit" class="input_zhuce" name="submit" value="提交" />
         </form>
     </div>
 </div>
