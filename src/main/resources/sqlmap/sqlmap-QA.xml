@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzx.graduate.dao.MysqlOperation">
+    <resultMap id="ChoiceAnswerBean" type="ChoiceAnswerBean">
+        <result column="" property="answerID" />
+        <result column="" property="questionID" />
+        <result column="" property="optionAnswer" />
+    </resultMap>
+    <resultMap id="ChoiceQuestionBean" type="ChoiceQuestionBean">
+        <result column="" property="questionID" />
+        <result column="" property="questionName" />
+        <result column="" property="questionType" />
+        <result column="" property="optionA" />
+        <result column="" property="optionB" />
+        <result column="" property="optionC" />
+        <result column="" property="optionD" />
+    </resultMap>
+    <resultMap id="ShortAnswerBean" type="ShortAnswerBean">
+        <result column="" property="answerID" />
+        <result column="" property="questionID" />
+        <result column="" property="answerEnty" />
+    </resultMap>
+    <resultMap id="ShortQuestionBean" type="ShortQuestionBean">
+        <result column="" property="questionID" />
+        <result column="" property="questionName" />
+        <result column="" property="questionType" />
+    </resultMap>
+
+
+
+</mapper>

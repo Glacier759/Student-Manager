@@ -12,6 +12,10 @@
         <typeAlias type="com.zzx.graduate.entity.CourseClassBean" alias="CourseClassBean" />
         <typeAlias type="com.zzx.graduate.entity.CourStudentBean" alias="CourStudentBean" />
         <typeAlias type="com.zzx.graduate.entity.StudentBean" alias="StudentBean" />
+        <typeAlias type="com.zzx.graduate.entity.ShortAnswerBean" alias="ShortAnswerBean" />
+        <typeAlias type="com.zzx.graduate.entity.ShortQuestionBean" alias="ShortQuestionBean" />
+        <typeAlias type="com.zzx.graduate.entity.ChoiceAnswerBean" alias="ChoiceAnswerBean" />
+        <typeAlias type="com.zzx.graduate.entity.ChoiceQuestionBean" alias="ChoiceQuestionBean" />
     </typeAliases>
 
     <environments default="development">
@@ -35,6 +39,7 @@
         <mapper resource="sqlmap/sqlmap-student.xml" />
         <mapper resource="sqlmap/sqlmap-courStudent.xml" />
         <mapper resource="sqlmap/sqlmap-courseClass.xml" />
+        <mapper resource="sqlmap/sqlmap-QA.xml" />
     </mappers>
 
 </configuration>

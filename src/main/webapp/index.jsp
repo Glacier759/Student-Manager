@@ -30,9 +30,7 @@
     <nav >
         <ul>
             <li><a href="<%=request.getContextPath()%>/student.jsp">实验安排</a></li>
-            <li><a href="<%=request.getContextPath()%>/zhuce.jsp">实验注册</a></li>
             <li><a href="<%=request.getContextPath()%>/select.jsp">成绩查询</a></li>
-            <li><a href="<%=request.getContextPath()%>/submit.jsp">作业提交</a></li>
             <li><a href="<%=request.getContextPath()%>/test.jsp">在线测试</a></li>
         </ul>
     </nav>

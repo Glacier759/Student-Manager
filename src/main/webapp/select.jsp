@@ -3,6 +3,7 @@
 <%@ page import="com.zzx.graduate.entity.ExpGroupBean" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.zzx.graduate.entity.ExpGroupMemBean" %>
+<%@ page import="com.zzx.graduate.entity.TaskResultBean" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
@@ -33,9 +34,7 @@
     <nav >
         <ul>
             <li><a href="<%=request.getContextPath()%>/student.jsp">实验安排</a></li>
-            <li><a href="<%=request.getContextPath()%>/zhuce.jsp">实验注册</a></li>
             <li><a href="<%=request.getContextPath()%>/select.jsp">成绩查询</a></li>
-            <li><a href="<%=request.getContextPath()%>/submit.jsp">作业提交</a></li>
             <li><a href="<%=request.getContextPath()%>/test.jsp">在线测试</a></li>
         </ul>
     </nav>
@@ -77,8 +76,10 @@
                     String members = "";
                     String leader = "";
                     List<ExpGroupMemBean> memBeans = service.getExpGroupMemByGroupID(bean.getGroupID());
+                    TaskResultBean result;
                     for ( ExpGroupMemBean memBean : memBeans ) {
                         if ( memBean.getLeaderTag() == 1 ) {
+                            result = service.getTaskResultByExpID_SubbmiterID(memBean.getStuID(), bean.getExpID());
                             leader = service.getStuNameByStuID(memBean.getStuID()).getName();
                         }
                         else {

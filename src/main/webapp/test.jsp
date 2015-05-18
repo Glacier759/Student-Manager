@@ -29,9 +29,7 @@
     <nav >
         <ul>
             <li><a href="<%=request.getContextPath()%>/student.jsp">实验安排</a></li>
-            <li><a href="<%=request.getContextPath()%>/zhuce.jsp">实验注册</a></li>
             <li><a href="<%=request.getContextPath()%>/select.jsp">成绩查询</a></li>
-            <li><a href="<%=request.getContextPath()%>/submit.jsp">作业提交</a></li>
             <li><a href="<%=request.getContextPath()%>/test.jsp">在线测试</a></li>
         </ul>
     </nav>
@@ -52,52 +50,47 @@
                 <td>张三</td>
             </tr>
         </table>
-          <form class="question" action="" >
+          <form class="question" action="<%=request.getContextPath()%>/TestServlet" method="post">
               <p>不定项选择题</p>
               <ul>
                   <li>
                       第1题
                   </li>
-                  <input name="a1" class="check" type="checkbox" value=""  />A
-                  <input name="a1" class="check" type="checkbox" value="" />B
-                  <input name="a1" class="check" type="checkbox" value="" />C
-                  <input name="a1" class="check" type="checkbox" value="" />D
-              </ul>
-              <ul>
+                  <li><%%></li>
                   <li>
-                      第1题
+                      <input name="a1" class="check" type="checkbox" value="A"  />A
+                      <input name="a1" class="check" type="checkbox" value="B" />B
+                      <input name="a1" class="check" type="checkbox" value="C" />C
+                      <input name="a1" class="check" type="checkbox" value="D" />D
                   </li>
-                  <input name="a2" class="check" type="checkbox" value=""  />A
-                  <input name="a2" class="check" type="checkbox" value="" />B
-                  <input name="a2" class="check" type="checkbox" value="" />C
-                  <input name="a2" class="check" type="checkbox" value="" />D
               </ul>
               <ul>
                   <li>
                       第2题
                   </li>
+                  <input name="a2" class="check" type="checkbox" value="A"  />A
+                  <input name="a2" class="check" type="checkbox" value="B" />B
+                  <input name="a2" class="check" type="checkbox" value="C" />C
+                  <input name="a2" class="check" type="checkbox" value="D" />D
+              </ul>
+              <ul>
+                  <li>
+                      第3题
+                  </li>
                   <input name="a3" class="check" type="checkbox" value=""  />A
                   <input name="a3" class="check" type="checkbox" value="" />B
                   <input name="a3" class="check" type="checkbox" value="" />C
                   <input name="a3" class="check" type="checkbox" value="" />D
-              </ul><ul>
-              <li>
-                  第3题
-              </li>
-              <input name="a3" class="check" type="checkbox" value=""  />A
-              <input name="a3" class="check" type="checkbox" value="" />B
-              <input name="a3" class="check" type="checkbox" value="" />C
-              <input name="a3" class="check" type="checkbox" value="" />D
-          </ul>
+              </ul>
               <ul>
-              <li>
-                  第4题
-              </li>
+                  <li>
+                      第4题
+                  </li>
                   <input name="a4" class="check" type="checkbox" value=""  />A
                   <input name="a4" class="check" type="checkbox" value="" />B
                   <input name="a4" class="check" type="checkbox" value="" />C
                   <input name="a4" class="check" type="checkbox" value="" />D
-          </ul>
+              </ul>
               <ul>
                   <li>
                       第5题
@@ -119,7 +112,7 @@
                       <li>
                           第2题
                       </li>
-                      <input name="q7" class="check" type="text" value=""  />
+                      <input name="a7" class="check" type="text" value=""  />
                   </ul>
                   <ul>
                       <li>
