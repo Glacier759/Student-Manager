@@ -81,4 +81,12 @@ public interface MysqlOperation {
 
     public List<ExpGroupMemBean> getExpGroupMenByGroupID(Integer groupID);
 
+    public List<ChoiceQuestionBean> getChoiceQuestion(String questionType);
+
+    public List<ShortQuestionBean> getShortQuestion(String questionType);
+
+    public void setChoiceAnswer(ChoiceAnswerBean choiceAnswer);
+
+    public void setShortAnswer(ShortAnswerBean shortAnswer);
+
 }

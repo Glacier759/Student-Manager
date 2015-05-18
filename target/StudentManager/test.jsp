@@ -1,3 +1,9 @@
+<%@ page import="com.zzx.graduate.service.QAService" %>
+<%@ page import="com.zzx.graduate.entity.ChoiceQuestionBean" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Random" %>
+<%@ page import="com.zzx.graduate.entity.ShortAnswerBean" %>
+<%@ page import="com.zzx.graduate.entity.ShortQuestionBean" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%
     if ( session.getAttribute("login") == null || session.getAttribute("login").equals("false") ) {
@@ -34,108 +40,59 @@
         </ul>
     </nav>
 </header>
+<%
+    Random random = new Random();
+    QAService service = new QAService();
+    String questionType = "a";
+    if ( random.nextBoolean() ) {   questionType = "b"; }
+    List<ChoiceQuestionBean> choiceBeans = service.getChoiceQuestion(questionType);
+    List<ShortQuestionBean> shortBeans = service.getShortQuestion(questionType);
+    session.setAttribute("choiceBeans", choiceBeans);
+    session.setAttribute("shortBeans", shortBeans);
+%>
 <div id="content">
         <div class="test">
         <table class="datalist">
             <tr>
-                <th scope="col">测试标题</th>
-                <th scope="col">开始时间</th>
-                <th scope="col">截止时间</th>
-                <th scope="col">限制用时（分钟）</th>
+                <th scope="col">试题类型</th>
             </tr>
             <tr >
-                <td >微机原理</td>
-                <td>3.1</td>
-                <td>FF109</td>
-                <td>张三</td>
+                <td><%=questionType%>卷</td>
             </tr>
         </table>
-          <form class="question" action="" >
+          <form class="question" action="<%=request.getContextPath()%>/TestServlet" method="post">
               <p>不定项选择题</p>
+              <%
+                for ( int index = 0; index < choiceBeans.size(); index ++ ) {
+                    ChoiceQuestionBean choiceBean = choiceBeans.get(index);
+              %>
               <ul>
+                  <li>第<%=index+1%>题</li>
+                  <li><%=choiceBean.getQuestionName()%></li>
                   <li>
-                      第1题
+                      <input name="a<%=index+1%>" class="check" type="checkbox" value="A"  /><%=choiceBean.getOptionA()%>
+                      <input name="a<%=index+1%>" class="check" type="checkbox" value="B" /><%=choiceBean.getOptionB()%>
+                      <input name="a<%=index+1%>" class="check" type="checkbox" value="C" /><%=choiceBean.getOptionC()%>
+                      <input name="a<%=index+1%>" class="check" type="checkbox" value="D" /><%=choiceBean.getOptionD()%>
                   </li>
-                  <input name="a1" class="check" type="checkbox" value=""  />A
-                  <input name="a1" class="check" type="checkbox" value="" />B
-                  <input name="a1" class="check" type="checkbox" value="" />C
-                  <input name="a1" class="check" type="checkbox" value="" />D
               </ul>
-              <ul>
-                  <li>
-                      第1题
-                  </li>
-                  <input name="a2" class="check" type="checkbox" value=""  />A
-                  <input name="a2" class="check" type="checkbox" value="" />B
-                  <input name="a2" class="check" type="checkbox" value="" />C
-                  <input name="a2" class="check" type="checkbox" value="" />D
-              </ul>
-              <ul>
-                  <li>
-                      第2题
-                  </li>
-                  <input name="a3" class="check" type="checkbox" value=""  />A
-                  <input name="a3" class="check" type="checkbox" value="" />B
-                  <input name="a3" class="check" type="checkbox" value="" />C
-                  <input name="a3" class="check" type="checkbox" value="" />D
-              </ul><ul>
-              <li>
-                  第3题
-              </li>
-              <input name="a3" class="check" type="checkbox" value=""  />A
-              <input name="a3" class="check" type="checkbox" value="" />B
-              <input name="a3" class="check" type="checkbox" value="" />C
-              <input name="a3" class="check" type="checkbox" value="" />D
-          </ul>
-              <ul>
-              <li>
-                  第4题
-              </li>
-                  <input name="a4" class="check" type="checkbox" value=""  />A
-                  <input name="a4" class="check" type="checkbox" value="" />B
-                  <input name="a4" class="check" type="checkbox" value="" />C
-                  <input name="a4" class="check" type="checkbox" value="" />D
-          </ul>
-              <ul>
-                  <li>
-                      第5题
-                  </li>
-                  <input name="a5" class="check" type="checkbox" value=""  />A
-                  <input name="a5" class="check" type="checkbox" value="" />B
-                  <input name="a5" class="check" type="checkbox" value="" />C
-                  <input name="a5" class="check" type="checkbox" value="" />D
-              </ul>
+              <%
+                }
+              %>
               <p>简答题</p>
               <div class="jianda">
+                  <%
+                    for ( int index = 0; index < shortBeans.size(); index ++ ) {
+                        ShortQuestionBean shortBean = shortBeans.get(index);
+                  %>
                   <ul>
-                      <li>
-                          第1题
-                      </li>
-                      <input name="a6" class="check" type="text" value=""  />
+                      <li>第<%=index+1%>题</li>
+                      <li><%=shortBean.getQuestionName()%></li>
+                      <li><input name="a<%=index+6%>" class="check" type="text" value="" /></li>
                   </ul>
-                  <ul>
-                      <li>
-                          第2题
-                      </li>
-                      <input name="q7" class="check" type="text" value=""  />
-                  </ul>
-                  <ul>
-                      <li>
-                          第3题
-                      </li>
-                      <input name="a8" class="check" type="text" value=""  />
-                  </ul><ul>
-                  <li>
-                      第4题
-                  </li>
-                  <input name="a9" class="check" type="text" value=""  />
-              </ul>
-                  <ul>
-                      <li>
-                          第5题
-                      </li>
-                      <input name="a10" class="check" type="text" value=""  />
-                  </ul>
+                  <%
+                    }
+                  %>
               </div>
               <input type="submit" class="input_login center" name="submit" value="提交" />
           </form>
