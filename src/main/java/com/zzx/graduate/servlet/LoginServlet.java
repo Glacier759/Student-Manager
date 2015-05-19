@@ -15,7 +15,6 @@ import java.io.IOException;
 /**
  * Created by glacier on 15-5-14.
  */
-@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //执行完方法体需要跳转至的jsp页面

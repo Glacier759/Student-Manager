@@ -21,7 +21,6 @@ import java.util.List;
 /**
  * Created by glacier on 15-5-17.
  */
-@WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("select.jsp");

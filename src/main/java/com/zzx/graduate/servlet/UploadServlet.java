@@ -19,7 +19,6 @@ import java.util.Iterator;
 /**
  * Created by glacier on 15-5-17.
  */
-@WebServlet("/UploadServlet")
 public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("select.jsp");

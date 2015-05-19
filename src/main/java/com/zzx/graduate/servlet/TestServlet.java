@@ -20,7 +20,6 @@ import java.util.Map;
 /**
  * Created by glacier on 15-5-18.
  */
-@WebServlet("/TestServlet")
 public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");

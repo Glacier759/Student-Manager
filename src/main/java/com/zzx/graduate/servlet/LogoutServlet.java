@@ -12,7 +12,6 @@ import java.io.IOException;
 /**
  * Created by glacier on 15-5-16.
  */
-@WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
